@@ -1,0 +1,48 @@
+<body>
+  <div class="container">
+
+    <h1>PhotoLab</h1>
+
+    <div style="display:flex">
+      <div class="input-field" style="width:300px; margin-right:50px">
+        <input placeholder="Текст сообщения" id="first_name" type="text" class="validate" [(ngModel)]="message">
+      </div>
+  
+      <form style="margin-right:50px">
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>Загрузить фотографию</span>
+            <input type="file" (change)="handleFileInput($event.target.files)">
+          </div>
+          <div class="file-path-wrapper" style="width:300px">
+            <input class="file-path validate" type="text">
+          </div>
+        </div>
+      </form>
+
+      <button style="margin-top:20px"  class="btn waves-effect waves-light" (click)="uploadFileToActivity()">Отправить</button>
+    </div>
+    
+
+    <div *ngIf="photo" style="display: inline-block" >
+      <h6>Фото</h6>
+      <img [src]="photo" style="width:300px; margin: 30px">
+    </div>
+
+    <div>
+      
+    </div>
+    <div *ngIf='isLoading'>
+      <mat-progress-spinner
+          mode="indeterminate" diameter='100' style="margin:30px" >
+      </mat-progress-spinner>
+    </div>
+
+    <div *ngIf="urlFinal">
+      <img [src]="urlFinal" style="width:600px; margin: 30px">
+    </div>
+
+  </div>
+</body>
+
+
