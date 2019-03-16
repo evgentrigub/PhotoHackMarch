@@ -8,33 +8,41 @@ import { UploadService } from './services/upload.service';
   providers: [UploadService]
 })
 export class AppComponent {
-  title = 'app';
-  fileToUpload: File = null;
+  photoToUpload: File = null;
 
-  urlPhoto1: string;
-  urlsemiFinal: string;
   isLoading: boolean;
-
   urlFinal: string;
   photo: string;
   message: string;
+  base64textString:string = '';
 
   constructor(
-    private upload: UploadService,
+    private uploadSevice: UploadService,
   ) { }
-  handleFileInput(files: FileList) {
+  handleFileInput(files: File) {
+    var file = files[0];
+    console.log(file);
 
-    console.log(files);
-    this.fileToUpload = files.item(0);
-    if (files) {
+    if (files && file) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
         this.photo = e.target.result;
       };
-      reader.readAsDataURL(files[0]);
+      reader.readAsDataURL(file);
+
+      var reader1 = new FileReader();
+      reader1.onload =this._handleReaderLoaded.bind(this);
+      reader1.readAsBinaryString(file);
     }
   }
   uploadElements() {
-    
+    this.uploadSevice.postElements(this.message, this.base64textString);
   }
+  
+  _handleReaderLoaded(readerEvt) {
+    var binaryString = readerEvt.target.result;
+    this.base64textString= btoa(binaryString);
+    console.log(btoa(binaryString));
+   }
+
 }

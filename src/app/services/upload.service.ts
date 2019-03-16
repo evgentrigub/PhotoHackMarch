@@ -12,20 +12,20 @@ const httpOptions = {
 export class UploadService {
  
   private url = "";
+  base64textString = [];
  
   constructor(
     private http: HttpClient,
 ) { }
 
 // postElements(message:string, photo?: File):Observable<any>{
-postElements(message:string, photo?: File){
-  let formData: FormData = new FormData();
-  formData.append('message', message);
-  if(photo){
-    formData.append('photo', photo);  
+postElements(message:string, photoBase64: string){
+
+  if(message && photoBase64){
+    const body = {img: photoBase64, message: message};
+    console.log("Message and Photo: "+message+' '+photoBase64);
+    return this.http.post(this.url, body);
   }
-  // return this.http.post(this.url, formData)
-  return console.log("Data: "+formData);
 }
 // postFile(fileToUpload: File): Observable<any> {
 //     const endpoint = 'http://upload-hack.photolab.me/upload.php';
