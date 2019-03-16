@@ -11,7 +11,7 @@ const httpOptions = {
 @Injectable()
 export class UploadService {
  
-  private url = "";
+  private url = "http://127.01.01.01:8000/photo";
   base64textString = [];
  
   constructor(

@@ -29,9 +29,6 @@
       <img [src]="photo" style="width:300px; margin: 30px">
     </div>
 
-    <div>
-      
-    </div>
     <div *ngIf='isLoading'>
       <mat-progress-spinner
           mode="indeterminate" diameter='100' style="margin:30px" >
@@ -40,8 +37,10 @@
 
     <div *ngIf="urlFinal">
       <img [src]="urlFinal" style="width:600px; margin: 30px">
+      <!-- <div *ngFor="let el of urlFinal">
+        el
+      </div> -->
     </div>
-
   </div>
 </body>
 
