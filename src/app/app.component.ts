@@ -36,7 +36,10 @@ export class AppComponent {
     }
   }
   uploadElements() {
-    this.uploadSevice.postElements(this.message, this.base64textString);
+    this.uploadSevice.postElements(this.message, this.base64textString).subscribe(data =>{
+      console.log(data);
+      this.urlFinal = data;
+    })
   }
   
   _handleReaderLoaded(readerEvt) {
