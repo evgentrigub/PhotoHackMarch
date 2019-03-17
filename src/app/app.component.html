@@ -1,7 +1,10 @@
 <body>
   <div class="container">
 
-    <h1>PhotoLab</h1>
+    <div style="display: inline-flex; margin-top: 5%">
+        <img style="width: 80px; height: 80px" src="https://hh.ru/employer-logo/2813108.jpeg">
+        <div style="font-size: 50pt">PhotoLab</div>
+    </div>
 
     <div style="display:flex">
       <div class="input-field" style="width:300px; margin-right:50px">
@@ -10,8 +13,8 @@
   
       <form style="margin-right:50px">
         <div class="file-field input-field">
-          <div class="btn">
-            <span>Загрузить фотографию</span>
+          <div>
+            <img style="width: 60px; margin: 1%" src="../../assets/img/upload-photolab.png">
             <input type="file" (change)="handleFileInput($event.target.files)">
           </div>
           <div class="file-path-wrapper" style="width:300px">
@@ -20,7 +23,7 @@
         </div>
       </form>
 
-      <button style="margin-top:20px"  class="btn waves-effect waves-light" (click)="uploadElements()">Отправить</button>
+      <button style="margin-top:20px" class="btn waves-effect waves-light" type="button" (click)="uploadElements()"> <img style="width: 100px; margin: 1%" src="../../assets/img/uploadbutton.png"> </button>
     </div>
     
 
