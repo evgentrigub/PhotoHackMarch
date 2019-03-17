@@ -39,10 +39,8 @@
     </div>
 
     <div *ngIf="urlFinal">
-      <img [src]="urlFinal" style="width:600px; margin: 30px">
-      <!-- <div *ngFor="let el of urlFinal">
-        el
-      </div> -->
+      <!-- <img [src]="urlFinal" style="width:600px; margin: 30px"> -->
+      <img src="{{'data:image/jpg;base64,' + urlFinal}}" />
     </div>
   </div>
 </body>

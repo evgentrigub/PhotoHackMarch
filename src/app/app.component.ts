@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UploadService } from './services/upload.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ export class AppComponent {
 
   constructor(
     private uploadSevice: UploadService,
+    private domSantizer: DomSanitizer
   ) { }
   handleFileInput(files: File) {
     var file = files[0];
@@ -37,8 +39,9 @@ export class AppComponent {
   }
   uploadElements() {
     this.uploadSevice.postElements(this.message, this.base64textString).subscribe(data =>{
-      console.log(data);
-      this.urlFinal = data;
+      console.log(data.image);
+      this.urlFinal = data.image;
+      // this.urlFinal  = this.domSantizer.bypassSecurityTrustUrl(data)
     })
   }
   
@@ -46,6 +49,9 @@ export class AppComponent {
     var binaryString = readerEvt.target.result;
     this.base64textString= btoa(binaryString);
     console.log(btoa(binaryString));
-   }
+  }
+
+
+
 
 }
