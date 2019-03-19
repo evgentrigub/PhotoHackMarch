@@ -38,7 +38,9 @@ export class AppComponent {
     }
   }
   uploadElements() {
+    this.isLoading = true;
     this.uploadSevice.postElements(this.message, this.base64textString).subscribe(data =>{
+      this.isLoading = false;
       console.log(data.image);
       this.urlFinal = data.image;
       // this.urlFinal  = this.domSantizer.bypassSecurityTrustUrl(data)
